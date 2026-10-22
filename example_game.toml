@@ -1,0 +1,29 @@
+# Example configuration for recompiler
+
+[xbe]
+path = "assets/default.xbe"
+# game title signature
+title = 0x4D570029
+# entry point for the executable
+entry = 0xF40CA
+# XDK version number
+xdk = 5849
+# output directory for generated sources
+out = "generated/game"
+# number of partitions generated (same as in original config)
+partitions = 128
+# sections to keep, from original
+code_sections = [".text", "D3D", "XGRPH", "DSOUND", "D3DX", "PSFD00", "WMADEC", "XPP", ".idata"]
+
+# extra entry points not automatically handled
+[functions]
+0xF1A07 = "XapiNotifyRoutine"
+
+# hooks overwritten by host (replace with 0 if not needed)
+[symbols]
+NONE = 0
+
+# optional hooks to add
+[[hook]]
+# at = <address>
+# call = "FunctionName"
